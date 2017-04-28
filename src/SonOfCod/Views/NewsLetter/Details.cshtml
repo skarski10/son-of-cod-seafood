@@ -1,36 +1,43 @@
 ﻿@{
-    ViewData["Title"] = "Post - Details";
+    ViewData["Title"] = "News Letter - Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @model SonOfCod.Models.NewsLetter
 
 @if (User.Identity.IsAuthenticated)
 {
-    <h2>Edit or Delete @Html.DisplayNameFor(model => model.Title) Details</h2>
-    <div>@Html.ActionLink("Edit", "Edit", new { id = Model.NewsLetterId }, null) | @Html.ActionLink("Delete", "Delete", new { id = Model.NewsLetterId }, null)</div>
+    <div class="well">
+        <h2>Edit or Delete @Html.DisplayFor(model => model.Title) Details</h2>
+        <div>@Html.ActionLink("Edit", "Edit", new { id = Model.NewsLetterId }, null) | @Html.ActionLink("Delete", "Delete", new { id = Model.NewsLetterId }, null)</div>
+    </div>
     <hr />
-    <div class="row">
-        @Html.DisplayNameFor(model => model.Title)
-        @Html.DisplayFor(model => model.Title)
-    </div>
+    <div class="well">
+        <div class="row news-letter-title">
+            @Html.DisplayFor(model => model.Title)
+        </div>
 
-    <div class="row">
-        <img src="@Url.Content(Model.Image)" alt="Image" />
+        <div class="row news-letter-image">
+            <img src="@Url.Content(Model.Image)" alt="Image" />
+        </div>
+        <div class="row news-letter-body">
+            @Html.DisplayFor(model => model.Body)
+        </div>
     </div>
-    @Html.DisplayNameFor(model => model.Body)
-    @Html.DisplayFor(model => model.Body)
 }
 
 else
 {
-    <div class="row">
-        @Html.DisplayNameFor(model => model.Title)
-        @Html.DisplayFor(model => model.Title)
-    </div>
+    <div class="well">
+        <div class="row news-letter-title">
+            @Html.DisplayFor(model => model.Title)
+        </div>
 
-    <div class="row">
-        <img src="@Url.Content(Model.Image)" alt="Image" />
+        <div class="row news-letter-image">
+            <img src="@Url.Content(Model.Image)" alt="Image" />
+        </div>
+        <div class="row news-letter-body">
+            @Html.DisplayFor(model => model.Body)
+        </div>        
     </div>
-    @Html.DisplayNameFor(model => model.Body)
-    @Html.DisplayFor(model => model.Body)
+   
 }

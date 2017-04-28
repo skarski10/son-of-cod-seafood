@@ -7,11 +7,21 @@
 @model IEnumerable<SonOfCod.Models.NewsLetter>
 
 <div class="row">
+    <h3>Striving to be the best!</h3>
+    <p>We expect ourselves to do business right, to lead by example and to help out when we are needed. It is our company philosophy that guides our everyday decisions. It is good to be responsible, not just because it is the right thing to do, but because it also sets the bar for our company’s commitment to ensure that the communities in which we work and live will continue to prosper.</p>
+</div>
+<div class="row">
     @foreach (var newsLetter in Model)
     {
-        <div class="well well-sm">
-            <h3>@Html.ActionLink(newsLetter.Title, "Details", "NewsLetter", new { id = newsLetter.NewsLetterId })</h3>
-            <img src="@Url.Content(newsLetter.Image)" alt="Image" />
-        </div>
+        <div class-="container">
+            <div class="well well-sm">
+                <div class="row news-letter-title">
+                    @Html.ActionLink(newsLetter.Title, "Details", "NewsLetter", new { id = newsLetter.NewsLetterId })
+                </div>
+                <div class="row news-letter-image">
+                    <img src="@Url.Content(newsLetter.Image)" alt="Image" />
+                </div>
+            </div>
+        </div>        
     }
 </div>

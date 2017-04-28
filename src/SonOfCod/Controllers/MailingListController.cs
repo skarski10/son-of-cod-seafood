@@ -7,17 +7,39 @@ using Microsoft.AspNetCore.Identity;
 using SonOfCod.Models;
 using SonOfCod.ViewModels;
 using System.Security.Claims;
-
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+using Microsoft.EntityFrameworkCore;
 
 namespace SonOfCod.Controllers
 {
     public class MailingListController : Controller
     {
-        // GET: /<controller>/
-        public IActionResult Index()
+        private readonly SonOfACodDbContext _db;
+        private readonly UserManager<User> _userManager;
+
+
+        public MailingListController(UserManager<User> userManager, SonOfACodDbContext db)
+        {
+            _userManager = userManager;
+            _db = db;
+        }
+        public IActionResult Details()
+        {
+            return View(_db.MailingLists.ToList());
+        }
+        public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(MailingList mailingList)
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            mailingList.User = currentUser;
+            _db.MailingLists.Add(mailingList);
+            _db.SaveChanges();
+            return RedirectToAction("Index", "Account");
         }
     }
 }

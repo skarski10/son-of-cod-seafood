@@ -3,43 +3,58 @@
 <html>
 <head>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Eagle+Lake" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="~/css/styles.css" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <div>
-        <div class="container">
-            <nav class="navbar navbar-inverse" id="header">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand title-link">@Html.ActionLink("Welcome to Son Of A Cod", "Index", "Account")</a>
-                    </div>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>@Html.ActionLink("Join Mailing List", "Create", "MailingList")</li>
-                        <li>
-                            @if (User.Identity.IsAuthenticated)
-                        {
-                            <li>@Html.ActionLink("Create News Letter", "Create", "NewsLetter")</li>
-                            <li>@Html.ActionLink("See Mailing List", "Details", "MailingList")</li>
-                            <li>@Html.ActionLink(User.Identity.Name, "Index", "NewsLetter")</li>
-                            <li>
-                                @using (Html.BeginForm("LogOff", "Account"))
-                            {
-                                <input type="submit" id="logout" value="Logout" />
-                            }
-                        </li>
-                        }
-                        else
-                        {
-                            <li>@Html.ActionLink("Register an Admin", "Register")</li>
-                            <li>@Html.ActionLink("Admin Login", "Login")</li>
-                        }
-                    </ul>
+    <div class="container">
+        <nav class="navbar navbar-inverse" id="header">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand title-link">@Html.ActionLink("Welcome to Son Of A Cod", "Index", "Account")</a>
                 </div>
-            </nav>
-            @RenderBody()
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Join Mailing List", "Create", "MailingList")</li>
+                    <li>
+                          
+                </ul>
+            </div>
+        </nav>
+        <div class="jumbotron">
+            <h1>Son Of A Cod!</h1>
+            <span id="">We have the freshes fish and best beards!</span>
         </div>
+        @RenderBody()
     </div>
+    <div class="container">
+        <footer class="footer">
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <ul class="list-inline">
+                    <li>@Html.ActionLink("Create News Letter", "Create", "NewsLetter")</li>
+                    <li>@Html.ActionLink("See Mailing List", "Details", "MailingList")</li>
+                    <li>@Html.ActionLink(User.Identity.Name, "Index", "NewsLetter")</li>
+                    <li>
+                        @using (Html.BeginForm("LogOff", "Account"))
+                        {
+                            <input type="submit" id="logout" value="Logout" />
+                        }
+                    </li>
+                </ul>
+            }
+            else
+            {
+                <ul class="list-inline">
+                    <li>@Html.ActionLink("Register an Admin", "Register")</li>
+                    <li>@Html.ActionLink("Admin Login", "Login")</li>
+                </ul>
+            }
+        </footer>
+    </div>
+
 </body>
 </html>
