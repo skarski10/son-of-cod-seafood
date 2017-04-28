@@ -6,12 +6,12 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    <div class="well">
+    <div class="">
         <h2>Edit or Delete @Html.DisplayFor(model => model.Title) Details</h2>
         <div>@Html.ActionLink("Edit", "Edit", new { id = Model.NewsLetterId }, null) | @Html.ActionLink("Delete", "Delete", new { id = Model.NewsLetterId }, null)</div>
     </div>
     <hr />
-    <div class="well">
+    <div class="">
         <div class="row news-letter-title">
             @Html.DisplayFor(model => model.Title)
         </div>
@@ -27,7 +27,7 @@
 
 else
 {
-    <div class="well">
+    <div class="">
         <div class="row news-letter-title">
             @Html.DisplayFor(model => model.Title)
         </div>

@@ -14,19 +14,19 @@
         <nav class="navbar navbar-inverse" id="header">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand title-link">@Html.ActionLink("Welcome to Son Of A Cod", "Index", "Account")</a>
+                    <div id="company-logo">
+                        <img src="~/img/logo.png" />
+                        <span id="company-name"><a class="navbar-brand title-link">@Html.ActionLink("Son Of A Cod: ", "Index", "Account")</a></span>
+                        <span id="company-saying">"We have the freshes fish and best beards!"</span>
+                    </div>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
                     <li>@Html.ActionLink("Join Mailing List", "Create", "MailingList")</li>
-                    <li>
+                    <li>@Html.ActionLink("About Us", "AboutUs", "Account")</li>
                           
                 </ul>
             </div>
         </nav>
-        <div class="jumbotron">
-            <h1>Son Of A Cod!</h1>
-            <span id="">We have the freshes fish and best beards!</span>
-        </div>
         @RenderBody()
     </div>
     <div class="container">
