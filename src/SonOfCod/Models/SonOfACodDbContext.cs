@@ -13,5 +13,11 @@ namespace SonOfCod.Models
         {
 
         }
+        public virtual DbSet<MailingList> MailingList { get; set; }
+        public virtual DbSet<NewsLetter> NewsLetters { get; set; }
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        {
+            options.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=SonOfACod;integrated security=True;");
+        }
     }
 }

@@ -8,9 +8,10 @@ using SonOfCod.Models;
 namespace SonOfCod.Migrations
 {
     [DbContext(typeof(SonOfACodDbContext))]
-    partial class SonOfACodDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170428161058_NewsLetterAdd")]
+    partial class NewsLetterAdd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")

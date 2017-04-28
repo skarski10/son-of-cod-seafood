@@ -16,7 +16,7 @@ namespace SonOfCod.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, FlickrCloneDbContext db)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, SonOfACodDbContext db)
         {
             _userManager = userManager;
             _signInManager = signInManager;
