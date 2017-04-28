@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Join the mailing list";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model SonOfCod.Models.MailingList
+
+<h2>New News Letter</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Email)
+    @Html.EditorFor(model => model.Email)
+
+    <input type="submit" value="Create" class="btn btn-default" />
+}

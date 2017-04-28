@@ -68,20 +68,5 @@ namespace SonOfCod.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index");
         }
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Create(NewsLetter newsLetter)
-        {
-            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var currentUser = await _userManager.FindByIdAsync(userId);
-            newsLetter.User = currentUser;
-            _db.NewsLetters.Add(newsLetter);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
-        }
     }
 }

@@ -8,5 +8,8 @@ namespace SonOfCod.Models
 {
     public class User : IdentityUser
     {
+        internal class Identity
+        {
+        }
     }
 }

@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Post - Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model SonOfCod.Models.NewsLetter
+
+@if (User.Identity.IsAuthenticated)
+{
+    <h2>Edit or Delete @Html.DisplayNameFor(model => model.Title) Details</h2>
+    <div>@Html.ActionLink("Edit", "Edit", new { id = Model.NewsLetterId }, null) | @Html.ActionLink("Delete", "Delete", new { id = Model.NewsLetterId }, null)</div>
+    <hr />
+    <div class="row">
+        @Html.DisplayNameFor(model => model.Title)
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="row">
+        <img src="@Url.Content(Model.Image)" alt="Image" />
+    </div>
+    @Html.DisplayNameFor(model => model.Body)
+    @Html.DisplayFor(model => model.Body)
+}
+
+else
+{
+    <div class="row">
+        @Html.DisplayNameFor(model => model.Title)
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="row">
+        <img src="@Url.Content(Model.Image)" alt="Image" />
+    </div>
+    @Html.DisplayNameFor(model => model.Body)
+    @Html.DisplayFor(model => model.Body)
+}

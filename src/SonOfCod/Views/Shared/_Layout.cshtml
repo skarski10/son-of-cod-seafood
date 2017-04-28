@@ -13,13 +13,15 @@
             <nav class="navbar navbar-inverse" id="header">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand title-link">@Html.ActionLink("Welcome to Son of a Cod", "Index", "Account")</a>
+                        <a class="navbar-brand title-link">@Html.ActionLink("Welcome to Son Of A Cod", "Index", "Account")</a>
                     </div>
                     <ul class="nav navbar-nav navbar-right">
+                        <li>@Html.ActionLink("Join Mailing List", "Create", "MailingList")</li>
                         <li>
                             @if (User.Identity.IsAuthenticated)
                         {
-                        <li>@Html.ActionLink("Create News Letter", "Create")</li>
+                            <li>@Html.ActionLink("Create News Letter", "Create", "NewsLetter")</li>
+                            <li>@Html.ActionLink("See Mailing List", "Details", "MailingList")</li>
                             <li>@Html.ActionLink(User.Identity.Name, "Index", "NewsLetter")</li>
                             <li>
                                 @using (Html.BeginForm("LogOff", "Account"))
@@ -32,7 +34,7 @@
                         {
                             <li>@Html.ActionLink("Register an Admin", "Register")</li>
                             <li>@Html.ActionLink("Admin Login", "Login")</li>
-                        }</li>
+                        }
                     </ul>
                 </div>
             </nav>

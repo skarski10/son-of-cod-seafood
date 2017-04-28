@@ -10,7 +10,7 @@
     @foreach (var newsLetter in Model)
     {
         <div class="well well-sm">
-            <h3>@Html.ActionLink(newsLetter.Title, "Details", "NewsLetter", new { id = newsLetter.NewsLetterId }, null)</h3>
+            <h3>@Html.ActionLink(newsLetter.Title, "Details", "NewsLetter", new { id = newsLetter.NewsLetterId })</h3>
             <img src="@Url.Content(newsLetter.Image)" alt="Image" />
         </div>
     }
