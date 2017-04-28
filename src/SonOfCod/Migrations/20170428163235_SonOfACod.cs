@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace SonOfCod.Migrations
 {
-    public partial class Initial : Migration
+    public partial class SonOfACod : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -148,6 +148,48 @@ namespace SonOfCod.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "MailingList",
+                columns: table => new
+                {
+                    MailingListId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Email = table.Column<string>(nullable: true),
+                    UserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MailingList", x => x.MailingListId);
+                    table.ForeignKey(
+                        name: "FK_MailingList_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "NewsLetter",
+                columns: table => new
+                {
+                    NewsLetterId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Body = table.Column<string>(nullable: true),
+                    Image = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: true),
+                    UserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_NewsLetter", x => x.NewsLetterId);
+                    table.ForeignKey(
+                        name: "FK_NewsLetter_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
@@ -179,6 +221,16 @@ namespace SonOfCod.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_MailingList_UserId",
+                table: "MailingList",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_NewsLetter_UserId",
+                table: "NewsLetter",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "EmailIndex",
                 table: "AspNetUsers",
                 column: "NormalizedEmail");
@@ -206,6 +258,12 @@ namespace SonOfCod.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "MailingList");
+
+            migrationBuilder.DropTable(
+                name: "NewsLetter");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

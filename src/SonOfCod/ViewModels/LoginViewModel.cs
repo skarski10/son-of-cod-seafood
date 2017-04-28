@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SonOfCod.ViewModels
 {
-    public class LoginView
+    public class LoginViewModel
     {
         public string Email { get; set; }
         public string Password { get; set; }

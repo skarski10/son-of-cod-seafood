@@ -8,8 +8,8 @@ using SonOfCod.Models;
 namespace SonOfCod.Migrations
 {
     [DbContext(typeof(SonOfACodDbContext))]
-    [Migration("20170428161058_NewsLetterAdd")]
-    partial class NewsLetterAdd
+    [Migration("20170428163235_SonOfACod")]
+    partial class SonOfACod
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -131,7 +131,11 @@ namespace SonOfCod.Migrations
 
                     b.Property<string>("Email");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("MailingListId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("MailingList");
                 });
@@ -147,7 +151,11 @@ namespace SonOfCod.Migrations
 
                     b.Property<string>("Title");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("NewsLetterId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("NewsLetter");
                 });
@@ -236,6 +244,20 @@ namespace SonOfCod.Migrations
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SonOfCod.Models.MailingList", b =>
+                {
+                    b.HasOne("SonOfCod.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("SonOfCod.Models.NewsLetter", b =>
+                {
+                    b.HasOne("SonOfCod.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
         }
     }

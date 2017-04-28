@@ -13,6 +13,6 @@ namespace SonOfCod.Models
         [Key]
         public int MailingListId { get; set; }
         public string Email { get; set; }
-
+        public virtual User User { get; set; }
     }
 }

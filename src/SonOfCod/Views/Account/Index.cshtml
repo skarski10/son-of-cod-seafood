@@ -1,13 +1,17 @@
-﻿    ViewData["Title"] = "Index";
+﻿@{
+    ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @using System.Security.Claims
-@model IEnumerable<FlickrClone.Models.Post>
+@model IEnumerable<SonOfCod.Models.NewsLetter>
 
 <div class="row">
-    @foreach (var post in Model)
+    @foreach (var newsLetter in Model)
     {
-       <div></div>
+        <div class="well well-sm">
+            <h3>@Html.ActionLink(newsLetter.Title, "Details", "NewsLetter", new { id = newsLetter.NewsLetterId }, null)</h3>
+            <img src="@Url.Content(newsLetter.Image)" alt="Image" />
+        </div>
     }
 </div>
